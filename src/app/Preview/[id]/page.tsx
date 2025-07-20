@@ -11,7 +11,7 @@ import { Restaurent } from "@/hooks/data/types";
 import ReviewContainer from "@/components/Review/ReviewContainer";
 import ReviewCard from "@/components/Review/ReviewCard";
 
-export default function Preview() {
+export async function generateStaticParams() {
   const { id } = useParams();
   const { getById } = useRestaurantUtils();
 
