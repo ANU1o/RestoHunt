@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "RestoHunt",
     description: "A Simple Diner Finder - Made by ANU1o",
-    images: [""],
   },
 };
 
