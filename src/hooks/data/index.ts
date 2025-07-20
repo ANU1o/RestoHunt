@@ -7,7 +7,7 @@ export function useRestaurantUtils() {
   const [restaurants, setRestaurants] = useState<Restaurent[]>([]);
 
   useEffect(() => {
-    fetch("restohunt.netlify.app/data/restaurants.json")
+    fetch("/data/restaurants.json")
       .then((res) => {
         return res.json();
       })
