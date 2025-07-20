@@ -1,0 +1,9 @@
+#hero-container {
+  min-height: 100dvh;
+  padding: 0 15%;
+  background: url(/images/heroBG.svg) fixed center/cover;
+}
+
+#hero-img {
+  max-height: 25rem;
+}

@@ -1,0 +1,28 @@
+.hotel-card {
+  background-color: var(--bs-primary);
+  :hover {
+    background-color: var(--bs-dark);
+  }
+}
+
+#heading {
+  height: 5rem;
+}
+
+.card-img-size {
+  height: 25rem;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .card-img-size {
+    height: 25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-img-size {
+    height: 100%;
+    width: 5rem;
+  }
+}

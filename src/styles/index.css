@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Titillium+Web&display=swap");
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bs-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bs-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--bs-secondary);
+}
+
+#root-grid {
+  display: grid;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  grid-template-rows: 1fr auto;
+}
+
+.portfolio-brand-logo {
+  font-family: "Major Mono Display", monospace;
+}

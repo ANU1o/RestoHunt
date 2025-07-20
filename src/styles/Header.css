@@ -1,0 +1,13 @@
+.h-header {
+  height: 5.5rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .h-header {
+    height: 3.5rem;
+  }
+}

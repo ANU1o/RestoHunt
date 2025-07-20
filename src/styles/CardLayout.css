@@ -1,0 +1,25 @@
+#card-layout {
+  display: grid;
+  grid-gap: 1rem;
+  margin: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+}
+
+@media (max-width: 1280px) {
+  #card-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  #card-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  #card-layout {
+    grid-template-columns: 1fr;
+  }
+}
