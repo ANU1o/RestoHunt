@@ -1,13 +1,15 @@
+import fs from "fs";
+import path from "path";
 import { Restaurent } from "./types";
 
 export async function fetchRestaurants(): Promise<Restaurent[]> {
-  const res = await fetch(
-    new URL("/data/restaurants.json", process.env.BASE_URL).toString()
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "data",
+    "restaurants.json"
   );
-  if (!res.ok) {
-    throw new Error("Failed to load restaurant data");
-  }
-
-  const data = await res.json();
+  const fileContents = fs.readFileSync(filePath, "utf-8");
+  const data = JSON.parse(fileContents);
   return data.restaurants;
 }
