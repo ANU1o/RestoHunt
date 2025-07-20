@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 export const metadata: Metadata = {
   title: "RestoHunt",
   description: "A Simple Diner Finder - Made by ANU1o",
+  metadataBase: new URL("https://restohunt.netlify.app"),
   openGraph: {
     title: "RestoHunt",
     description: "A Simple Diner Finder - Made by ANU1o",
