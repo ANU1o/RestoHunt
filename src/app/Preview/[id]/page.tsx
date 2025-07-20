@@ -1,4 +1,4 @@
-"use client";
+
 
 import { useRestaurantUtils } from "@/hooks";
 import { useParams } from "next/navigation";
