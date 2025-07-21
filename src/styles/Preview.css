@@ -11,12 +11,6 @@
   aspect-ratio: auto;
 }
 
-@media (max-width: 990px) {
-  .img-prev {
-    aspect-ratio: 1/1;
-  }
-}
-
 @media (max-width: 992px) {
   #preview {
     margin-top: 5rem;
@@ -34,8 +28,8 @@
     min-height: calc(100% - 5rem);
   }
   .img-prev {
-    aspect-ratio: auto;
-    min-height: calc(100% - 5rem);
+    aspect-ratio: 1/1;
+    min-height: auto;
   }
 }
 
@@ -45,7 +39,7 @@
     min-height: calc(100dvh - 3rem);
   }
   .img-prev {
-    min-height: calc(100dvh - 3rem);
     aspect-ratio: 1/1;
+    min-height: auto;
   }
 }
