@@ -27,8 +27,8 @@ To support static generation ([`generateStaticParams()`](./src/app/Preview/[id]/
 
 ## 🧭 Routing Behavior
 
-- **Home page** lists all restaurants via [`getAll()`](./src/hooks/data/index.ts#L19)
-- **Preview page** renders details for a single restaurant using route params + [`getById()`](./src/hooks/data/index.ts#L20)
+- **Home page** lists all restaurants via [`getAll`](./src/hooks/data/index.ts#L19)
+- **Preview page** renders details for a single restaurant using route params + [`getById`](./src/hooks/data/index.ts#L20)
 - Static export ready with pre-rendered dynamic paths
 - Open Graph metadata from [`opengraph-image.jpg`](./src/app/opengraph-image.jpg)
 
