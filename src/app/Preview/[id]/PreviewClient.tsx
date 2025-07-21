@@ -28,11 +28,13 @@ export default function PreviewClient() {
     },
     imgCol: {
       sm: 12,
+      md: true,
       lg: true,
       className: "p-0",
     },
     contentCol: {
       sm: 12,
+      md: true,
       lg: true,
       className: "p-5",
     },
