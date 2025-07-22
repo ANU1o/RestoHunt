@@ -3,21 +3,60 @@
 import { useRestaurantUtils } from "@/hooks";
 import { useParams } from "next/navigation";
 import "@/styles/Preview.css";
-import { Col, Container, Image, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Col,
+  ColProps,
+  Container,
+  Image,
+  ImageProps,
+  Placeholder,
+  PlaceholderProps,
+  Row,
+  RowProps,
+} from "react-bootstrap";
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome";
 import { faLocationPin, faUtensils } from "@fortawesome/free-solid-svg-icons";
-import { OperatingHours } from "@/components";
+import { OperatingHours, ReviewCard, ReviewContainer } from "@/components";
 import { Restaurent } from "@/hooks/data/types";
-import ReviewContainer from "@/components/Review/ReviewContainer";
-import ReviewCard from "@/components/Review/ReviewCard";
+
+import { HTMLAttributes, useEffect, useState } from "react";
+import { OperatingHoursProps } from "@/components/OperatingHours/types";
+
+interface PreviewContentProps {
+  container:
+    | HTMLAttributes<HTMLDivElement>
+    | { "data-bs-theme": "dark" | "light" };
+  row: RowProps;
+  imgCol: ColProps;
+  contentCol: ColProps;
+  img: ImageProps;
+  imgPlaceholder: PlaceholderProps;
+  hotelName: HTMLAttributes<HTMLHeadingElement>;
+  hr: HTMLAttributes<HTMLHRElement>;
+  location: HTMLAttributes<HTMLHRElement>;
+  locationIcon: FontAwesomeIconProps;
+  ctype: HTMLAttributes<HTMLParagraphElement>;
+  operatingHour: OperatingHoursProps;
+  ctypeIcon: FontAwesomeIconProps;
+}
 
 export default function PreviewClient() {
   const { id } = useParams();
   const { getById } = useRestaurantUtils();
 
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   const restaurent: Restaurent | undefined = getById(id as string);
 
-  const previewContentProps = {
+  const previewContentProps: PreviewContentProps = {
     container: {
       "data-bs-theme": "dark",
       className: "bg-body text-body",
@@ -41,6 +80,11 @@ export default function PreviewClient() {
     img: {
       src: restaurent?.photograph,
       className: "img-prev",
+    },
+    imgPlaceholder: {
+      as: "div",
+      animation: "wave",
+      className: "w-100 h-100 placeholder img-prev",
     },
     hotelName: {
       className: "text-white",
@@ -70,19 +114,50 @@ export default function PreviewClient() {
       <Container>
         <Row {...previewContentProps.row}>
           <Col {...previewContentProps.imgCol}>
-            <Image {...previewContentProps.img} />
+            {isLoading ? (
+              <Placeholder {...previewContentProps.imgPlaceholder} />
+            ) : (
+              <Image {...previewContentProps.img} />
+            )}
           </Col>
           <Col {...previewContentProps.contentCol}>
-            <h1 {...previewContentProps.hotelName}>{restaurent?.name}</h1>
-            <hr {...previewContentProps.hr} />
-            <h5 {...previewContentProps.location}>
-              <FontAwesomeIcon {...previewContentProps.locationIcon} />{" "}
-              {restaurent?.neighborhood}, {restaurent?.address}
-            </h5>
-            <p {...previewContentProps.ctype}>
-              <FontAwesomeIcon {...previewContentProps.ctypeIcon} />{" "}
-              {restaurent?.cuisine_type}
-            </p>
+            {isLoading ? (
+              <>
+                <Placeholder
+                  {...previewContentProps.hotelName}
+                  animation="glow"
+                  size="lg"
+                >
+                  <Placeholder xs="6" style={{ height: "2.25rem" }} />
+                </Placeholder>
+                <hr {...previewContentProps.hr} />
+                <Placeholder
+                  {...previewContentProps.location}
+                  animation="glow"
+                  size="sm"
+                >
+                  <FontAwesomeIcon {...previewContentProps.locationIcon} />{" "}
+                  <Placeholder xs="2" />, <Placeholder xs="8" />
+                </Placeholder>
+                <Placeholder {...previewContentProps.ctype} animation="glow">
+                  <FontAwesomeIcon {...previewContentProps.ctypeIcon} />{" "}
+                  <Placeholder xs={3} />
+                </Placeholder>
+              </>
+            ) : (
+              <>
+                <h1 {...previewContentProps.hotelName}>{restaurent?.name}</h1>
+                <hr {...previewContentProps.hr} />
+                <h5 {...previewContentProps.location}>
+                  <FontAwesomeIcon {...previewContentProps.locationIcon} />{" "}
+                  {restaurent?.neighborhood}, {restaurent?.address}
+                </h5>
+                <p {...previewContentProps.ctype}>
+                  <FontAwesomeIcon {...previewContentProps.ctypeIcon} />{" "}
+                  {restaurent?.cuisine_type}
+                </p>
+              </>
+            )}
             <hr {...previewContentProps.hr} />
             <OperatingHours {...previewContentProps.operatingHour} />
             <hr {...previewContentProps.hr} />
